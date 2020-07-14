@@ -15,7 +15,65 @@ Paper: [Deep Learning for Spatio-Temporal Data Mining](https://arxiv.org/pdf/190
 
 # [Content](#content)
 
-
+- <a href = "#Abstract">Abstract</a>
+- <a href = "#Introduction">Introduction</a>
+- <a href = "#Categorization-of-Spatio-Temporal-Data">Categorization of Spatio-Temporal Data</a>
+  - <a href = "#Data-Types">Data Types</a>
+    - <a href = "#Event-data">Event data</a>
+    - <a href = "#Trajectory-data">Trajectory data</a>
+    - <a href = "#Point-reference-data">Point reference data</a>
+    - <a href = "#Raster-data">Raster data</a>
+    - <a href = "#Video">Video</a>
+  - <a href = "#Data-Instances-and-Representations">Data Instances and Representations</a>
+    - <a href = "#Data-instances">Data instances</a>
+    - <a href = "#Data-representations">Data representations</a>
+  - <a href = "#Preliminary-of-Deep-Learning-Models">Preliminary of Deep Learning Models</a>
+    - <a href = "#Restricted-Boltzmann-Machines-(RBM)">Restricted Boltzmann Machines (RBM)</a>
+    - <a href = "#CNN">CNN</a>
+    - <a href = "#GraphCNN">GraphCNN</a>
+    - <a href = "#RNN-and-LSTM">RNN and LSTM</a>
+    - <a href = "#Seq2Seq">Seq2Seq</a>
+    - <a href = "#Autoencoder-(AE)-and-Stacked-AE">Autoencoder (AE) and Stacked AE</a>
+- <a href = "#Framework">Framework</a>
+  - <a href = "#ST Data Preprocessing">ST Data Preprocessing</a>
+  - <a href = "#Deep-Learning-Model-Selection-&-Design">Deep Learning Model Selection & Design</a>
+  - <a href = "#Addressing-STDM-Problems">Addressing STDM Problems</a>
+- <a href = "#Deep-Learning-Models-for-Addressing-Different-STDM-Problems">Deep Learning Models for Addressing Different STDM Problems</a>
+  - <a href = "#Predictive-Learning">Predictive-Learning</a>
+    - <a href = "#Points">Points</a>
+    - <a href = "#Time-series">Time series</a>
+    - <a href = "#Spatial-maps">Spatial maps</a>
+    - <a href = "#Trajectories">Trajectories</a>
+    - <a href = "#ST-raster">ST raster</a>
+  - <a href = "#Representation-Learning">Representation Learning</a>
+    - <a href = "#Trajectories">Trajectories</a>
+    - <a href = "#Spatial-maps">Spatial maps</a>
+  - <a href = "#Classification">Classification</a>
+  - <a href = "#Estimation-and-Inference">Estimation and Inference</a>
+    - <a href = "#Spatial-maps">Spatial maps</a>
+    - <a href = "#Trajectories">Trajectories</a>
+  - <a href = "#Anomaly-Detection">Anomaly Detection</a>
+    - <a href = "#Events">Events</a>
+    - <a href = "#Spatial-maps">Spatial maps</a>
+  - <a href = "#Other-tasks">Other tasks</a>
+  - <a href = "#Fusing-Multi-Sourced-Data">Fusing Multi-Sourced Data</a>
+    - <a href = "#Raw-data-level-fusion">Raw data-level fusion</a>
+    - <a href = "#Latent-feature-level-fusion">Latent feature-level fusion</a>
+  - <a href = "#Attention-Mechanism">Attention Mechanism</a>
+- <a href = "#Application">Application</a>
+  - <a href = "#Transportation">Transportation</a>
+  - <a href = "#On-Demand-Service">On-Demand Service</a>
+  - <a href = "#Climate-&-Weather">Climate & Weather</a>
+  - <a href = "#Human-Mobility">Human Mobility</a>
+  - <a href = "#Location-Based-Social-Network-(LBSN)">Location Based Social Network (LBSN)</a>
+  - <a href = "#Crime-Analysis">Crime Analysis</a>
+  - <a href = "#Neuroscience">Neuroscience</a>
+- <a href = "#Open-Problems">Open Problems</a>
+  - <a href = "#Interpretable-models">Interpretable models</a>
+  - <a href = "#Deep-learning-model-selection">Deep learning model selection</a>
+  - <a href = "#Broader-applications-to-more-STDM-tasks">Broader applications to more STDM tasks</a>
+  - <a href = "#Fusing-multi-modal-ST-datasets">Fusing multi-modal ST datasets</a>
+- <a href = "#Conclusion">Conclusion</a>
 
 # [Abstract](#content)
 
@@ -172,7 +230,7 @@ ST数据预处理旨在将ST数据实例表示为深度学习模型可以处理�
 
 在本节中，我们将对STDM问题进行分类，并介绍为解决这些问题而建议的相应深度学习模型。图14显示了由深度学习模型解决的各种STDM问题的分布情况，包括预测，表示学习，检测，分类，推理/估计，推荐等。可以看到，研究的STDM问题中最大的类别是预测。超过70％的相关论文致力于研究ST数据预测问题。这主要是因为准确的预测很大程度上取决于高质量的特征，而深度学习模型在特征学习中尤其强大。第二大问题类别是表示学习，它旨在以无监督或半监督的方式学习各种ST数据的特征表示。深度学习模型还用于其他STDM任务，包括分类，检测，推理/估计，推荐等。接下来，我们将详细介绍主要的STDM问题，并总结相应的基于深度学习的解决方案。
 
-## [Predictive Learning The](#content)
+## [Predictive Learning](#content)
 
 预测学习的基本目标是根据其历史数据来预测ST数据的未来可能观测值。对于不同的应用程序，输入和输出变量都可以属于不同类型的ST数据实例，从而导致了各种预测性学习问题的表述。在下文中，我们将基于ST数据实例的类型作为模型输入来介绍预测问题。
 
@@ -293,7 +351,7 @@ STDM中使用的神经注意机制通常可分为空间域注意[19]，[39]和�
 
 随着移动设备的广泛使用，近年来见证了与人类移动性相关的大量地理位置数据集的爆炸式增长。大量的人类流动性数据使我们能够定量研究个体和集体的人类流动性模式，并生成可以捕获和再现人类轨迹的时空结构和规律的模型。对人员流动性的研究对于诸如估算移民流量，交通预测，城市规划，人类行为分析和个性化推荐等应用尤其重要。应用于人类移动性数据的深度学习技术主要集中于人类轨迹数据挖掘，例如轨迹分类[36]，轨迹预测[38]，[64]，[163]，轨迹表示学习[82]，[170]，移动性模式挖掘[118]，并根据轨迹[24]，[42]推断出人类的运输方式。基于不同的应用场景和分析目的，可以将人类轨迹建模为不同类型的ST数据类型和数据表示形式，从而可以应用不同的深度学习模型。用于人类轨迹数据挖掘的最广泛使用的模型是RNN和CNN模型，有时将两种类型的模型结合起来以捕获人类移动性数据之间的时空相关性。
 
-## [Location Based Social Network (LBSN) ](#content)
+## [Location Based Social Network (LBSN)](#content)
 
 基于位置的社交网络（例如Foursquare和Flickr）是使用GPS功能定位用户并允许用户从其移动设备广播其位置和其他内容的社交网络[196]。LBSN不仅意味着将位置添加到现有的社交网络中，以便人们可以共享位置信息，而且还包含新的社交结构，该新的社交结构由个人在现实世界中的位置以及他们的位置标记的媒体内容。LBSN数据包含大量用户签入数据，其中包括给定时间戳记下个人的即时位置。当前，深度学习方法已用于分析LBSN中用户生成的ST数据，研究的任务包括下一个签入位置预测[67]，LBSN中的用户表示学习[164]，地理特征提取[26]和用户 入住时间预测[165]。
 
